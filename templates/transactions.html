@@ -38,6 +38,13 @@
             background-color: #f6d365;
             border-color: #f6d365;
         }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -66,8 +73,9 @@
             </tbody>
         </table>
 
-        <div class="d-flex justify-content-center">
+        <div class="btn-container">
             <a class="btn btn-success" href="{{ url_for('add_transaction') }}">Add Transaction</a>
+            <a class="btn btn-info" href="{{ url_for('search_transactions') }}">Search Transactions</a>
         </div>
     </div>
 </body>
