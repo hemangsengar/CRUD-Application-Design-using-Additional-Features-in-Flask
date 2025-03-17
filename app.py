@@ -1,6 +1,8 @@
 # Import libraries
 from flask import Flask, redirect, request, render_template, url_for
 
+# TO RUN THE SERVER                  python app.py
+
 # Instantiate Flask functionality
 app = Flask(__name__)
 
@@ -36,7 +38,7 @@ def add_transaction():
 
 # Update operation
 
-@app.route("/edit/<int:transaction_id>", method = ["GET", "POST"])
+@app.route("/edit/<int:transaction_id>", methods = ["GET", "POST"])
 def edit_transaction(transaction_id):
     if request.method == "GET":
         for transaction in transactions:
@@ -49,8 +51,8 @@ def edit_transaction(transaction_id):
 
         for transaction in transactions:
             if transaction['id'] == transaction_id:
-                transaction['date'] = date       # Update the 'date' field of the transaction
-                transaction['amount'] = amount   # Update the 'amount' field of the transaction
+                transaction['date'] = date      
+                transaction['amount'] = amount  
                 break 
 
         return redirect(url_for("get_transactions"))
