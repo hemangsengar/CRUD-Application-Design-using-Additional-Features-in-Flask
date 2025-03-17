@@ -11,12 +11,31 @@ transactions = [
     {'id': 3, 'date': '2023-06-03', 'amount': 300}
 ]
 # Read operation
-@app.route
+@app.route("/")
+def get_transactions():
+    return render_template("transactions.html", transactions=transactions)
+
 
 
 # Create operation
 
+@app.route("/add", methods = ["GET","POST"])
+def add_transaction():
+    if request.method == "POST":
+        transation = {
+              'id': len(transactions)+1 ,
+              'date': request.form['date'],
+              'amount': float(request.form['amount'])
+             }
+        transactions.append(transation)
+
+        return redirect(url_for("get_transactions"))
+    
+
+    return render_template("form.html")
+
 # Update operation
+
 
 # Delete operation
 
